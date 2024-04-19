@@ -1,28 +1,32 @@
 ---
-/*const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
-    method: "POST",
-    headers: {
-        "Content-type": "application/json",
+import { type APISpaceXResponse } from "../types/api";
+
+const res = await fetch("https://api.spacexdata.com/v5/launches/query", {
+  method: "POST",
+  headers: {
+    "Content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: {},
+    options: {
+      sort: {
+        date_unix: "asc",
+      },
+      limit: 12,
     },
-    body: JSON.stringify({
-        query: {},
-        options: {
-            sort: {
-                date_unix: "asc",
-            },
-            limit:12,
-        },      
-    }),
-})
+  }),
+});
 
-const data = JSON.stringify(await res.json())
-
-console.log(data)*/
+const { docs: launches } = (await res.json()) as APISpaceXResponse;
 ---
 
 <div class="grid gap-8 sm:grid-cols-2 lg_grid-cols-3">
-    <article>
-
-    </article>
+  {
+    launches.map((launch) => (
+      <article>
+        <img src={launch.links.patch.small} alt="">
+        <h2>launch # {launch.id}</h2>
+      </article>
+    ))
+  }
 </div>
-

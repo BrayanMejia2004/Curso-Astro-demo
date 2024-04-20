@@ -1,8 +1,9 @@
 ---
+import { Counter } from "./Counter";
 import HeaderButton from "./HeaderButton.astro";
 ---
 
-<header class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
+<header transition:persist class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
   <div class="mx-auto text-center mb-8 lg:mb-4">
     <h2 class="mb-4 text-5xl tracking-tight font-extrabold text-white">
       SpaceX Launches
@@ -11,76 +12,73 @@ import HeaderButton from "./HeaderButton.astro";
       All the information about SpaceX Launches
     </p>
   </div>
+
+  <Counter client:visible />
+
+  <nav
+    class="flex flex-col items-center justify-center w-full text-center md:flex-row
+  p-0  px-0  py-9" >
+    <HeaderButton class="text-white" href="/">
+      <svg
+        slot="before"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+          d="M10 14l11 -11"></path><path
+          d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"
+        ></path></svg
+      >
+
+      Últimos lanzamientos</HeaderButton
+    >
+    <HeaderButton class="text-white" href="/about">
+      <svg
+        slot="before"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+          d="M14 3v4a1 1 0 0 0 1 1h4"
+        >
+        </path>
+        <path
+          d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
+        >
+        </path><path d="M11 14h1v4h1"></path><path d="M12 11h.01"></path></svg
+      >
+
+      Sobre el proyecto</HeaderButton
+    >
+    <HeaderButton class="text-white" href="/oldest">
+      <svg
+        slot="before"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+          d="M20.997 12.25a9 9 0 1 0 -8.718 8.745"></path><path
+          d="M19 19m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path><path
+          d="M17 21l4 -4"></path><path d="M12 7v5l2 2"></path></svg
+      >
+
+      Los más viejos
+    </HeaderButton>
+  </nav>
 </header>
-
-<nav
-  class="flex flex-col items-center justify-center w-full text-center md:flex-row Class
-  Properties
-  p-0 padding: 0px;
-  px-0 padding-left: 0px;
-  padding-right: 0px;
-  py-9"
->
-  <HeaderButton class="text-white" href="/">
-    <svg
-      slot="before"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M10 14l11 -11"></path><path
-        d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"
-      ></path></svg
-    >
-
-    Últimos lanzamientos</HeaderButton
-  >
-  <HeaderButton class="text-white" href="/about">
-    <svg
-      slot="before"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M14 3v4a1 1 0 0 0 1 1h4"
-      >
-      </path>
-      <path
-        d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
-      >
-      </path><path d="M11 14h1v4h1"></path><path d="M12 11h.01"></path></svg
-    >
-
-    Sobre el proyecto</HeaderButton
-  >
-  <HeaderButton class="text-white" href="/oldest">
-    <svg
-      slot="before"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M20.997 12.25a9 9 0 1 0 -8.718 8.745"></path><path
-        d="M19 19m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path><path
-        d="M17 21l4 -4"></path><path d="M12 7v5l2 2"></path></svg
-    >
-
-    Los más viejos
-  </HeaderButton>
-</nav>
